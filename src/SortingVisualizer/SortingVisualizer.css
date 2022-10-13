@@ -1,0 +1,30 @@
+* {
+    background-color: rgb(27, 32, 48);
+}
+
+.header {
+    background-color: green;
+    padding: 1vh 0;
+}
+
+.header-button {
+    border: white solid 4px;
+    border-radius: 10px;
+    background-color: transparent;
+    color: white;
+    padding: 1vh 2vh;
+    margin: 0 1vh;
+    cursor: pointer;
+}
+
+.array-container {
+    margin-top: 5rem;
+    left: 20rem;
+}
+
+.array-bar {
+    width: 5px;
+    background-color: aquamarine;
+    display: inline-block;
+    margin: 0 1px;
+}
