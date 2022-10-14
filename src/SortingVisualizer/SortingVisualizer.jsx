@@ -2,7 +2,7 @@ import React from 'react'
 import {mergeSort} from '.././sortingAlgorithms/sortingAlgorithms'
 import './SortingVisualizer.css'
 
-const ANIMATION_SPEED_MS = 5
+const ANIMATION_SPEED_MS = 1
 
 const NUMBER_OF_ARRAY_BARS = 200
 
@@ -71,18 +71,26 @@ export default class SortingVisualizer extends React.Component {
 
     }
 
+    getLength() {
+        const arrayLength = document.getElementById('array-length').value
+        return arrayLength
+    }
+
     render() {
         const {array} = this.state
 
         return (
             <>
             <div className='header'>
+                <input id='array-length' type='range' min='10' max='200' step='10'/>
+                <text id='array-value'>{}</text>
                 <button className='header-button' onClick={() => this.resetArray()}>Generate New Array</button>
                 <button className='header-button' onClick={() => this.mergeSort()}>Merge Sort</button>
                 <button className='header-button' onClick={() => this.quickSort()}>Quick Sort</button>
                 <button className='header-button' onClick={() => this.heapSort()}>Heap Sort</button>
                 <button className='header-button' onClick={() => this.bubbleSort()}>Bubble Sort</button>
                 <button className='header-button' onClick={() => this.insertionSort()}>Insertion Sort</button>
+                <button className='header-button' onClick={() => this.getLength()}>Test</button>
             </div>
             <div className="array-container">
                 {array.map((value, idx) => (

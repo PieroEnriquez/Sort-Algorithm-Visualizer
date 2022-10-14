@@ -7,11 +7,23 @@
     padding: 1vh 0;
 }
 
+#array-length {
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+#array-value {
+    background-color: inherit;
+    margin: 10px 10px;
+    font-size: 20px;
+    color: whitesmoke;
+}
+
 .header-button {
-    border: white solid 4px;
+    border: whitesmoke solid 4px;
     border-radius: 10px;
     background-color: transparent;
-    color: white;
+    color: whitesmoke;
     padding: 1vh 2vh;
     margin: 0 1vh;
     cursor: pointer;
@@ -19,7 +31,6 @@
 
 .array-container {
     margin-top: 5rem;
-    left: 20rem;
 }
 
 .array-bar {
