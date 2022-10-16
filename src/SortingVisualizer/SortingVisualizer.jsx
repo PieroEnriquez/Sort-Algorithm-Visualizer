@@ -1,8 +1,9 @@
 import React from 'react'
 import {mergeSort, bubbleSort} from '.././sortingAlgorithms/sortingAlgorithms'
+import {AnimationSpeed} from '../Components/Components'
 import './SortingVisualizer.css'
 
-const ANIMATION_SPEED_MS = 1
+// const ANIMATION_SPEED_MS = 3
 
 const NUMBER_OF_ARRAY_BARS = 200
 
@@ -23,6 +24,12 @@ export default class SortingVisualizer extends React.Component {
         this.resetArray()
     }
 
+    getAnimationSpeed() {
+        const ANIMATION_SPEED_MS = document.getElementById('counter').innerHTML
+
+        return ANIMATION_SPEED_MS
+    }
+
     resetArray() {
         const array = []
         for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i++) {
@@ -32,6 +39,7 @@ export default class SortingVisualizer extends React.Component {
     }
 
     mergeSort() {
+        const ANIMATION_SPEED_MS = this.getAnimationSpeed()
         const animations = mergeSort(this.state.array)
         for (let i = 0; i < animations.length; i++) {
             const arrayBars = document.getElementsByClassName('array-bar')
@@ -64,8 +72,8 @@ export default class SortingVisualizer extends React.Component {
     }
 
     bubbleSort() {
+        const ANIMATION_SPEED_MS = this.getAnimationSpeed()
         let animations = bubbleSort(this.state.array)
-        console.log(animations)
         for (let i = 1; i < animations.length; i++) {
             const arrayBars = document.getElementsByClassName('array-bar')
             const isColorChange = (i % 4 === 0) || (i % 4 === 1)
@@ -101,12 +109,14 @@ export default class SortingVisualizer extends React.Component {
         return (
             <>
             <div className='header'>
+                <AnimationSpeed />
                 <button className='header-button' onClick={() => this.resetArray()}>Generate New Array</button>
                 <button className='header-button' onClick={() => this.mergeSort()}>Merge Sort</button>
                 <button className='header-button' onClick={() => this.quickSort()}>Quick Sort</button>
                 <button className='header-button' onClick={() => this.heapSort()}>Heap Sort</button>
                 <button className='header-button' onClick={() => this.bubbleSort()}>Bubble Sort</button>
                 <button className='header-button' onClick={() => this.insertionSort()}>Insertion Sort</button>
+                <button className='header-button' onClick={() => this.getAnimationSpeed()}>Test</button>
             </div>
             <div className="array-container">
                 {array.map((value, idx) => (

@@ -59,8 +59,7 @@ const doMerge = (
 export const bubbleSort = array => {
     const animations = []
     if (array.length <= 1) return array
-    const auxiliaryArray = array.slice()
-    bubbleSortHelper(auxiliaryArray, animations)
+    bubbleSortHelper(array, animations)
     return animations
 }
 
@@ -87,3 +86,11 @@ const swap = (auxiliaryArray, firstIdx, secondIdx) => {
     auxiliaryArray[firstIdx] = auxiliaryArray[secondIdx]
     auxiliaryArray[secondIdx] = temp
 }
+
+export const insertionSort = array => {
+    const animations = []
+    if (array.length <= 1) return array
+    const auxiliaryArray = array.slice()
+    // insertionSortHelper(auxiliaryArray, )
+}
+
