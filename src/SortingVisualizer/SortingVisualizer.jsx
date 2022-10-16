@@ -1,5 +1,5 @@
 import React from 'react'
-import {mergeSort} from '.././sortingAlgorithms/sortingAlgorithms'
+import {mergeSort, bubbleSort} from '.././sortingAlgorithms/sortingAlgorithms'
 import './SortingVisualizer.css'
 
 const ANIMATION_SPEED_MS = 1
@@ -64,16 +64,35 @@ export default class SortingVisualizer extends React.Component {
     }
 
     bubbleSort() {
-
+        let animations = bubbleSort(this.state.array)
+        console.log(animations)
+        for (let i = 1; i < animations.length; i++) {
+            const arrayBars = document.getElementsByClassName('array-bar')
+            const isColorChange = (i % 4 === 0) || (i % 4 === 1)
+            if (isColorChange) {
+                const [barOneIdx, barTwoIdx] = animations[i]
+                const barOneStyle = arrayBars[barOneIdx].style
+                const barTwoStyle = arrayBars[barTwoIdx].style
+                const color = i % 4 === 0 ? SECONDARY_COLOR : PRIMARY_COLOR
+                setTimeout(() => {
+                    barOneStyle.backgroundColor = color
+                    barTwoStyle.backgorundColor = color
+                }, i * ANIMATION_SPEED_MS)
+            } else {
+                const [barIdx, newHeight] = animations[i]
+                if (barIdx === -1) {
+                    continue
+                }
+                const barStyle = arrayBars[barIdx].style
+                setTimeout(() => {
+                    barStyle.height = `${newHeight}px`
+                }, i * ANIMATION_SPEED_MS)
+            }
+        }
     }
 
     insertionSort() {
 
-    }
-
-    getLength() {
-        const arrayLength = document.getElementById('array-length').value
-        return arrayLength
     }
 
     render() {
@@ -82,15 +101,12 @@ export default class SortingVisualizer extends React.Component {
         return (
             <>
             <div className='header'>
-                <input id='array-length' type='range' min='10' max='200' step='10'/>
-                <text id='array-value'>{}</text>
                 <button className='header-button' onClick={() => this.resetArray()}>Generate New Array</button>
                 <button className='header-button' onClick={() => this.mergeSort()}>Merge Sort</button>
                 <button className='header-button' onClick={() => this.quickSort()}>Quick Sort</button>
                 <button className='header-button' onClick={() => this.heapSort()}>Heap Sort</button>
                 <button className='header-button' onClick={() => this.bubbleSort()}>Bubble Sort</button>
                 <button className='header-button' onClick={() => this.insertionSort()}>Insertion Sort</button>
-                <button className='header-button' onClick={() => this.getLength()}>Test</button>
             </div>
             <div className="array-container">
                 {array.map((value, idx) => (

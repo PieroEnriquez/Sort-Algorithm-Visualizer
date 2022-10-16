@@ -5,18 +5,8 @@
 .header {
     background-color: green;
     padding: 1vh 0;
-}
-
-#array-length {
-    cursor: pointer;
-    margin: 10px 0;
-}
-
-#array-value {
-    background-color: inherit;
-    margin: 10px 10px;
-    font-size: 20px;
-    color: whitesmoke;
+    width: 100%;
+    display: inline-block;
 }
 
 .header-button {
@@ -27,6 +17,12 @@
     padding: 1vh 2vh;
     margin: 0 1vh;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.header-button:hover {
+    border: rgb(27, 32, 48) solid 4px;
+    color: rgb(27, 32, 48);
 }
 
 .array-container {

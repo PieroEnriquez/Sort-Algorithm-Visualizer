@@ -1,4 +1,4 @@
-export function mergeSort(array) {
+export const mergeSort = array => {
     const animations = []
     if (array.length <= 1) return array
     const auxiliaryArray = array.slice()
@@ -56,4 +56,34 @@ const doMerge = (
     }
 }
 
+export const bubbleSort = array => {
+    const animations = []
+    if (array.length <= 1) return array
+    const auxiliaryArray = array.slice()
+    bubbleSortHelper(auxiliaryArray, animations)
+    return animations
+}
 
+const bubbleSortHelper = (auxiliaryArray, animations) => {
+    const length = auxiliaryArray.length
+    for (let i = 0; i < length - 1; i++) {
+        for (let j = 0; j < length - i - 1; j++) {
+            animations.push([j, j + 1])
+            animations.push([j, j + 1])
+            if (auxiliaryArray[j] > auxiliaryArray[j + 1]) {
+                animations.push([j, auxiliaryArray[j + 1]])
+                animations.push([j + 1, auxiliaryArray[j]])
+                swap(auxiliaryArray, j, j + 1)
+            } else {
+                animations.push([-1, -1])
+                animations.push([-1, -1])
+            }
+        }
+    }
+}
+
+const swap = (auxiliaryArray, firstIdx, secondIdx) => {
+    let temp = auxiliaryArray[firstIdx]
+    auxiliaryArray[firstIdx] = auxiliaryArray[secondIdx]
+    auxiliaryArray[secondIdx] = temp
+}
