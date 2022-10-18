@@ -20,7 +20,7 @@ export const AnimationSpeed = props => {
 
                 if (speed > 1 && speed < 6) setIndicator('Average')
                 if (speed < 7 && speed > 3) setIndicator('Slow')
-                if (speed <= 10 && speed > 6) setIndicator('Very Slow')
+                if (speed <= 10 && speed > 6) setIndicator('Very slow')
             }}>+</button>
         </>
     )

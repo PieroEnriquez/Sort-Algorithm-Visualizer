@@ -63,16 +63,16 @@ export const bubbleSort = array => {
     return animations
 }
 
-const bubbleSortHelper = (auxiliaryArray, animations) => {
-    const length = auxiliaryArray.length
+const bubbleSortHelper = (array, animations) => {
+    const length = array.length
     for (let i = 0; i < length - 1; i++) {
         for (let j = 0; j < length - i - 1; j++) {
             animations.push([j, j + 1])
             animations.push([j, j + 1])
-            if (auxiliaryArray[j] > auxiliaryArray[j + 1]) {
-                animations.push([j, auxiliaryArray[j + 1]])
-                animations.push([j + 1, auxiliaryArray[j]])
-                swap(auxiliaryArray, j, j + 1)
+            if (array[j] > array[j + 1]) {
+                animations.push([j, array[j + 1]])
+                animations.push([j + 1, array[j]])
+                swap(array, j, j + 1)
             } else {
                 animations.push([-1, -1])
                 animations.push([-1, -1])
@@ -81,16 +81,10 @@ const bubbleSortHelper = (auxiliaryArray, animations) => {
     }
 }
 
-const swap = (auxiliaryArray, firstIdx, secondIdx) => {
-    let temp = auxiliaryArray[firstIdx]
-    auxiliaryArray[firstIdx] = auxiliaryArray[secondIdx]
-    auxiliaryArray[secondIdx] = temp
+const swap = (array, firstIdx, secondIdx) => {
+    let temp = array[firstIdx]
+    array[firstIdx] = array[secondIdx]
+    array[secondIdx] = temp
 }
 
-export const insertionSort = array => {
-    const animations = []
-    if (array.length <= 1) return array
-    const auxiliaryArray = array.slice()
-    // insertionSortHelper(auxiliaryArray, )
-}
 

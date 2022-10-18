@@ -5,7 +5,7 @@ import './SortingVisualizer.css'
 
 // const ANIMATION_SPEED_MS = 3
 
-const NUMBER_OF_ARRAY_BARS = 200
+const NUMBER_OF_ARRAY_BARS = 150
 
 const PRIMARY_COLOR = 'aquamarine'
 
@@ -99,10 +99,6 @@ export default class SortingVisualizer extends React.Component {
         }
     }
 
-    insertionSort() {
-
-    }
-
     render() {
         const {array} = this.state
 
@@ -111,12 +107,9 @@ export default class SortingVisualizer extends React.Component {
             <div className='header'>
                 <AnimationSpeed />
                 <button className='header-button' onClick={() => this.resetArray()}>Generate New Array</button>
+                <button className='header-button' onClick={() => this.bubbleSort()}>Bubble Sort</button>
                 <button className='header-button' onClick={() => this.mergeSort()}>Merge Sort</button>
                 <button className='header-button' onClick={() => this.quickSort()}>Quick Sort</button>
-                <button className='header-button' onClick={() => this.heapSort()}>Heap Sort</button>
-                <button className='header-button' onClick={() => this.bubbleSort()}>Bubble Sort</button>
-                <button className='header-button' onClick={() => this.insertionSort()}>Insertion Sort</button>
-                <button className='header-button' onClick={() => this.getAnimationSpeed()}>Test</button>
             </div>
             <div className="array-container">
                 {array.map((value, idx) => (
